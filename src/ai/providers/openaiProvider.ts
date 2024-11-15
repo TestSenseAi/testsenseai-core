@@ -1,0 +1,44 @@
+import axios from 'axios';
+import { GenerateTextOptions } from './aiProvider';
+
+export class OpenAIProvider {
+  private apiKey: string;
+  private apiUrl: string;
+  private useBeta: boolean;
+
+  constructor(apiKey: string, apiUrl: string, useBeta: boolean) {
+    this.apiKey = apiKey;
+    this.apiUrl = apiUrl;
+    this.useBeta = useBeta;
+  }
+
+  async generateText(prompt: string, options: GenerateTextOptions = {}): Promise<string> {
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.apiKey}`,
+    };
+
+    const data = {
+      model: options.model || 'gpt-4o', // Use beta model
+      prompt,
+      max_tokens: options.maxTokens || 150,
+      temperature: options.temperature || 0.7,
+      // Include any beta-specific parameters here
+    };
+
+    try {
+      const response = await axios.post(
+        `${this.apiUrl}/chat/completions`,
+        {
+          messages: [{ role: 'user', content: prompt }],
+          ...data,
+        },
+        { headers }
+      );
+      return response.data.choices[0].message.content.trim();
+    } catch (error) {
+      // Handle errors appropriately
+      throw new Error(`OpenAI Beta API error: ${error}`);
+    }
+  }
+}
