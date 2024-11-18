@@ -1,6 +1,7 @@
 export interface AIProvider {
   generateText(prompt: string, options?: GenerateTextOptions): Promise<string>;
-  // Add other methods as needed, e.g., selfHealSelector
+  selfHealSelector(domStructure: string, brokenSelector: string): Promise<string>;
+  convertToTestScript(description: string): Promise<string>;
 }
 
 export interface GenerateTextOptions {

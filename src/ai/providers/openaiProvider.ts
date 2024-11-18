@@ -1,6 +1,10 @@
 import axios from 'axios';
 import { GenerateTextOptions } from './aiProvider';
 
+import OpenAI from 'openai';
+import { Config } from '../../config/config';
+const openai = new OpenAI({ apiKey: Config.openAIApiKey });
+
 export class OpenAIProvider {
   private apiKey: string;
   private apiUrl: string;
@@ -23,7 +27,6 @@ export class OpenAIProvider {
       prompt,
       max_tokens: options.maxTokens || 150,
       temperature: options.temperature || 0.7,
-      // Include any beta-specific parameters here
     };
 
     try {
