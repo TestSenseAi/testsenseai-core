@@ -3,12 +3,16 @@ import { GenerateTextOptions } from './aiProvider';
 
 import OpenAI from 'openai';
 import { Config } from '../../config/config';
+import { LoggerType } from '../../utils/types';
+import { Logger } from '../../utils/logger';
+
 const openai = new OpenAI({ apiKey: Config.openAIApiKey });
 
 export class OpenAIProvider {
   private apiKey: string;
   private apiUrl: string;
   private useBeta: boolean;
+  private logger: LoggerType;
 
   constructor(apiKey: string, apiUrl: string, useBeta: boolean) {
     this.apiKey = apiKey;
