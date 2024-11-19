@@ -18,6 +18,7 @@ export class OpenAIProvider {
     this.apiKey = apiKey;
     this.apiUrl = apiUrl;
     this.useBeta = useBeta;
+    this.logger = new Logger('OpenAIProvider');
   }
 
   async generateText(prompt: string, options: GenerateTextOptions = {}): Promise<string> {
