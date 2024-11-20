@@ -1,6 +1,7 @@
 {
   "name": "testsenseai-core",
   "version": "0.1.0",
+  "repository": "https://github.com/TestSenseAi/testsenseai-core/",
   "description": "Core library for TestSenseAI",
   "type": "module",
   "scripts": {
