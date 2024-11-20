@@ -1,25 +1,32 @@
-# Lint Code Base using GitHub Super Linter
-name: Lint Code Base
+name: Lint and Format
 
 on:
   push:
-    branches: [ "master", "development" ]
+    branches: [ "main", "development" ]
   pull_request:
-    branches: [ "master", "development" ]
+    branches: [ "main", "development" ]
 
 jobs:
-  run-lint:
+  lint-and-format:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Lint Code Base
-        uses: github/super-linter@v5
-        env:
-          VALIDATE_ALL_CODEBASE: true
-          DEFAULT_BRANCH: "master"
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          LINTER_RULES_PATH: ./
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Run Prettier Format
+        run: npm run prettier:format
+
+      - name: Run Prettier Check
+        run: npm run prettier:check
