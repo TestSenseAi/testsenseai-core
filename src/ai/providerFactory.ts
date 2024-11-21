@@ -6,11 +6,7 @@ import { Config } from '../config/config';
 export function createAIProvider(): AIProvider {
   switch (Config.aiProvider) {
     case 'openai':
-      return new OpenAIProvider(
-        Config.openAIApiKey,
-        Config.openAIApiUrl,
-        Config.useBeta,
-      );
+      return new OpenAIProvider();
     case 'claude':
       return new ClaudeProvider();
     default:

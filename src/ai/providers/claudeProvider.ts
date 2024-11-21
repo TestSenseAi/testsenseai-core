@@ -1,5 +1,3 @@
-// src/ai/providers/claudeProvider.ts
-
 import { AIProvider } from './aiProvider';
 import axios from 'axios';
 import { Config } from '../../config/config';
@@ -11,7 +9,7 @@ export class ClaudeProvider implements AIProvider {
   constructor() {
     this.apiKey = Config.claudeApiKey;
     this.apiUrl =
-      Config.claudeApiUrl || 'https://api.anthropic.com/v1/complete'; // Update with the correct endpoint
+      Config.claudeApiUrl || 'https://api.anthropic.com/v1/complete'; //TODO:  Update with the correct endpoint
   }
 
   async generateText(prompt: string): Promise<string> {
@@ -40,7 +38,7 @@ export class ClaudeProvider implements AIProvider {
 
       const data = {
         prompt: prompt,
-        model: 'claude-v1', // Or the appropriate model
+        model: 'claude-v1', // TODO: Or the appropriate model
         max_tokens_to_sample: 500,
         temperature: 0.7,
         stop_sequences: ['\n\nHuman:'],

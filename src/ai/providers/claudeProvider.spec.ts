@@ -1,5 +1,3 @@
-// tests/ai/providers/claudeProvider.test.ts
-
 import { ClaudeProvider } from '../../../src/ai/providers/claudeProvider';
 import axios from 'axios';
 
@@ -31,6 +29,4 @@ describe('ClaudeProvider', () => {
       expect.any(Object),
     );
   });
-
-  // Add more tests for other methods
 });

@@ -1,24 +1,30 @@
 import { TestGenerator } from '../services/testGenerator';
 import { OpenAIProvider } from '../providers/openaiProvider';
 import { ClaudeProvider } from '../providers/claudeProvider';
-import { Config } from '../../config/config';
 
-describe('TestGenerator', () => {
+describe('TestGenerator - OpenAI', () => {
   let testGenerator: TestGenerator;
 
   beforeEach(() => {
-    // You can switch between providers here
-    // For OpenAIProvider
-    const aiProvider = new OpenAIProvider(
-      Config.openAIApiKey,
-      Config.openAIApiUrl,
-      Config.useBeta,
-    );
-    testGenerator = new TestGenerator(aiProvider);
+    const openaiProvider = new OpenAIProvider();
+    testGenerator = new TestGenerator(openaiProvider);
+  });
 
-    // For ClaudeProvider
-    // const aiProvider = new ClaudeProvider();
-    // testGenerator = new TestGenerator(aiProvider);
+  it('should generate test cases', async () => {
+    const requirement = 'User can log in with valid credentials.';
+    const testCases = await testGenerator.generateTestCases(requirement);
+
+    expect(testCases).toBeDefined();
+    expect(testCases.length).toBeGreaterThan(0);
+  });
+});
+
+describe('TestGenerator - Claude', () => {
+  let testGenerator: TestGenerator;
+
+  beforeEach(() => {
+    const claudeProvider = new ClaudeProvider();
+    testGenerator = new TestGenerator(claudeProvider);
   });
 
   it('should generate test cases', async () => {

@@ -14,10 +14,10 @@ export class OpenAIProvider implements AIProvider {
   private useBeta: boolean;
   private logger: LoggerType;
 
-  constructor(apiKey: string, apiUrl: string, useBeta: boolean) {
-    this.apiKey = apiKey;
-    this.apiUrl = apiUrl;
-    this.useBeta = useBeta;
+  constructor() {
+    this.apiKey = Config.openAIApiKey;
+    this.apiUrl = Config.openAIApiUrl;
+    this.useBeta = Config.useBeta;
     this.logger = new Logger('OpenAIProvider');
   }
 
@@ -31,7 +31,7 @@ export class OpenAIProvider implements AIProvider {
     };
 
     const data = {
-      model: options.model || 'gpt-4o', // Use beta model
+      model: options.model || 'gpt-4o',
       prompt,
       max_tokens: options.maxTokens || 150,
       temperature: options.temperature || 0.7,
@@ -48,7 +48,6 @@ export class OpenAIProvider implements AIProvider {
       );
       return response.data.choices[0].message.content.trim();
     } catch (error) {
-      // Handle errors appropriately
       throw new Error(`OpenAI Beta API error: ${error}`);
     }
   }
