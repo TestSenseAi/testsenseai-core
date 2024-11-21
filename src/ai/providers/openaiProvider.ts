@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GenerateTextOptions } from './aiProvider';
+import { AIProvider, GenerateTextOptions } from './aiProvider';
 
 import OpenAI from 'openai';
 import { Config } from '../../config/config';
@@ -8,7 +8,7 @@ import { Logger } from '../../utils/logger';
 
 const openai = new OpenAI({ apiKey: Config.openAIApiKey });
 
-export class OpenAIProvider {
+export class OpenAIProvider implements AIProvider {
   private apiKey: string;
   private apiUrl: string;
   private useBeta: boolean;
@@ -21,7 +21,10 @@ export class OpenAIProvider {
     this.logger = new Logger('OpenAIProvider');
   }
 
-  async generateText(prompt: string, options: GenerateTextOptions = {}): Promise<string> {
+  async generateText(
+    prompt: string,
+    options: GenerateTextOptions = {},
+  ): Promise<string> {
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.apiKey}`,
@@ -41,12 +44,20 @@ export class OpenAIProvider {
           messages: [{ role: 'user', content: prompt }],
           ...data,
         },
-        { headers }
+        { headers },
       );
       return response.data.choices[0].message.content.trim();
     } catch (error) {
       // Handle errors appropriately
       throw new Error(`OpenAI Beta API error: ${error}`);
     }
+  }
+
+  async selfHealSelector(dom: string, selector: string): Promise<string> {
+    return this.selfHealSelector(dom, selector);
+  }
+
+  async convertToTestScript(description: string): Promise<string> {
+    return this.convertToTestScript(description);
   }
 }

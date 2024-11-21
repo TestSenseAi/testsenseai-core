@@ -1,10 +1,13 @@
 import { AIProvider } from '../providers/aiProvider';
 
 export class NaturalLanguageProcessor {
-  constructor(private aiProvider: AIProvider) {}
+  private aiProvider: AIProvider;
+
+  constructor(aiProvider: AIProvider) {
+    this.aiProvider = aiProvider;
+  }
 
   async convertToTestScript(description: string): Promise<string> {
-    const prompt = `Convert the following test description into a TestSenseAi test script:\n${description}`;
-    return await this.aiProvider.generateText(prompt);
+    return this.aiProvider.convertToTestScript(description);
   }
 }
