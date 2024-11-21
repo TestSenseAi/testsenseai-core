@@ -12,5 +12,7 @@ export const Config = {
     process.env.ASSISTANT_INSTRUCTIONS ||
     'You are a helpful assistant that can test UI elements...',
   assistantModel: process.env.ASSISTANT_MODEL || 'gpt-4o',
-  // Add other configurations as needed
+  claudeApiKey: process.env.CLAUDE_API_KEY || '',
+  claudeApiUrl:
+    process.env.CLAUDE_API_URL || 'https://api.anthropic.com/v1/complete',
 };
