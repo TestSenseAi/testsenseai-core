@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GenerateTextOptions } from './aiProvider';
+import { AIProvider, GenerateTextOptions } from './aiProvider';
 
 import OpenAI from 'openai';
 import { Config } from '../../config/config';
@@ -8,27 +8,30 @@ import { Logger } from '../../utils/logger';
 
 const openai = new OpenAI({ apiKey: Config.openAIApiKey });
 
-export class OpenAIProvider {
+export class OpenAIProvider implements AIProvider {
   private apiKey: string;
   private apiUrl: string;
   private useBeta: boolean;
   private logger: LoggerType;
 
-  constructor(apiKey: string, apiUrl: string, useBeta: boolean) {
-    this.apiKey = apiKey;
-    this.apiUrl = apiUrl;
-    this.useBeta = useBeta;
+  constructor() {
+    this.apiKey = Config.openAIApiKey;
+    this.apiUrl = Config.openAIApiUrl;
+    this.useBeta = Config.useBeta;
     this.logger = new Logger('OpenAIProvider');
   }
 
-  async generateText(prompt: string, options: GenerateTextOptions = {}): Promise<string> {
+  async generateText(
+    prompt: string,
+    options: GenerateTextOptions = {},
+  ): Promise<string> {
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.apiKey}`,
     };
 
     const data = {
-      model: options.model || 'gpt-4o', // Use beta model
+      model: options.model || 'gpt-4o',
       prompt,
       max_tokens: options.maxTokens || 150,
       temperature: options.temperature || 0.7,
@@ -41,12 +44,19 @@ export class OpenAIProvider {
           messages: [{ role: 'user', content: prompt }],
           ...data,
         },
-        { headers }
+        { headers },
       );
       return response.data.choices[0].message.content.trim();
     } catch (error) {
-      // Handle errors appropriately
       throw new Error(`OpenAI Beta API error: ${error}`);
     }
+  }
+
+  async selfHealSelector(dom: string, selector: string): Promise<string> {
+    return this.selfHealSelector(dom, selector);
+  }
+
+  async convertToTestScript(description: string): Promise<string> {
+    return this.convertToTestScript(description);
   }
 }

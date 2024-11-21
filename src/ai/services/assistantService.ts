@@ -3,8 +3,6 @@ import { Config } from '../../config/config';
 import { Logger } from '../../utils/logger';
 import { LoggerType } from '../../utils/types';
 
-// Within methods
-
 export class AssistantService {
   private openai: OpenAI;
   private logger: LoggerType;
@@ -37,8 +35,8 @@ export class AssistantService {
       this.logger.info('Assistant created successfully.');
       return assistant;
     } catch (error) {
-      // Handle errors appropriately
       this.logger.error(`Error creating assistant: ${error}`);
+      throw new Error(`Error creating assistant: ${error}`);
     }
   }
 }
