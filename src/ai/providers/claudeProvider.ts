@@ -1,15 +1,15 @@
 import { AIProvider } from './aiProvider';
 import axios from 'axios';
-import { Config } from '../../config/config';
+import { config } from '../../config/config';
 
 export class ClaudeProvider implements AIProvider {
   private apiKey: string;
   private apiUrl: string;
 
   constructor() {
-    this.apiKey = Config.claudeApiKey;
+    this.apiKey = config.claudeConfig.apiKey;
     this.apiUrl =
-      Config.claudeApiUrl || 'https://api.anthropic.com/v1/complete'; //TODO:  Update with the correct endpoint
+      config.claudeConfig.apiUrl || 'https://api.anthropic.com/v1/complete'; //TODO:  Update with the correct endpoint
   }
 
   async generateText(prompt: string): Promise<string> {
@@ -25,6 +25,13 @@ export class ClaudeProvider implements AIProvider {
 
   async convertToTestScript(description: string): Promise<string> {
     const prompt = `Convert the following test case description into an executable test script:\n${description}`;
+    const response = await this.makeRequest(prompt);
+    return response;
+  }
+  async generateMethodName(element: any): Promise<string> {
+    const prompt = `Generate a method name for the following element:\n${JSON.stringify(
+      element,
+    )}`;
     const response = await this.makeRequest(prompt);
     return response;
   }

@@ -1,5 +1,5 @@
 import OpenAI from 'openai';
-import { Config } from '../../config/config';
+import { config } from '../../config/config';
 import { Logger } from '../../utils/logger';
 import { LoggerType } from '../../utils/types';
 
@@ -8,9 +8,8 @@ export class AssistantService {
   private logger: LoggerType;
   constructor() {
     this.openai = new OpenAI({
-      apiKey: Config.openAIApiKey,
-      baseURL: Config.openAIApiUrl,
-      dangerouslyAllowBrowser: Config.useBeta,
+      apiKey: config.openAIConfig.apiKey,
+      baseURL: config.openAIConfig.apiUrl,
     });
     this.logger = new Logger('AssistantService');
   }
