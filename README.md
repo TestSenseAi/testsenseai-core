@@ -56,7 +56,7 @@ npm install
 
    Create a .env file in the root directory and add your OpenAI API key:
 
-   ```
+   ```text
    OPENAI_API_KEY=your-openai-api-key
    OPENAI_API_URL=https://api.openai.com/v1
    USE_OPENAI_BETA=true
@@ -70,7 +70,7 @@ npx playwright install
 
 ## Project Structure
 
-```
+```text
 testsenseai-core/
 ├── src/
 │ ├── ai/
@@ -114,17 +114,17 @@ Use the AI-powered test generator to create test cases from natural language des
 
 Example:
 
-```
-
+```typescript
 import { testGenerator } from 'testsenseai-core';
 
 async function generateTests() {
-const testCases = await testGenerator.generateTestCases('User logs in and views the dashboard');
-console.log(testCases);
+  const testCases = await testGenerator.generateTestCases(
+    'User logs in and views the dashboard',
+  );
+  console.log(testCases);
 }
 
 generateTests();
-
 ```
 
 ### Self-Healing Selectors
@@ -133,19 +133,20 @@ Automatically heal broken selectors when elements in the UI change.
 
 Example:
 
-```
-
+```typescript
 import { selectorHealer } from 'testsenseai-core';
 
 async function healSelector() {
-const domStructure = '<html>...your DOM here...</html>';
-const brokenSelector = '#old-button-id';
-const newSelector = await selectorHealer.healSelector(domStructure, brokenSelector);
-console.log(`Suggested new selector: ${newSelector}`);
+  const domStructure = '<html>...your DOM here...</html>';
+  const brokenSelector = '#old-button-id';
+  const newSelector = await selectorHealer.healSelector(
+    domStructure,
+    brokenSelector,
+  );
+  console.log(`Suggested new selector: ${newSelector}`);
 }
 
 healSelector();
-
 ```
 
 ### Natural Language Processing
@@ -154,18 +155,18 @@ Convert plain language test descriptions into executable test scripts.
 
 Example:
 
-```
-
+```typescript
 import { naturalLanguageProcessor } from 'testsenseai-core';
 
 async function convertToScript() {
-const description = 'Test that the user can successfully reset their password.';
-const testScript = await naturalLanguageProcessor.convertToTestScript(description);
-console.log(testScript);
+  const description =
+    'Test that the user can successfully reset their password.';
+  const testScript =
+    await naturalLanguageProcessor.convertToTestScript(description);
+  console.log(testScript);
 }
 
 convertToScript();
-
 ```
 
 ## Roadmap
@@ -196,7 +197,7 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-For questions or support, please open an issue in the repository or contact us at support@testsenseai.com.
+For questions or support, please open an issue in the repository or contact us at <support@testsenseai.com>.
 
 ## Acknowledgments
 
@@ -209,7 +210,3 @@ For questions or support, please open an issue in the repository or contact us a
 - Technologies Used: Node.js, TypeScript, Playwright, OpenAI API (GPT-4 beta).
 
 Feel free to explore the codebase and provide feedback. Together, we can make automated testing smarter and more efficient with the power of AI!
-
-```
-
-```
