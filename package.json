@@ -18,12 +18,13 @@
     "inversify": "^6.1.4",
     "openai": "^4.72.0",
     "pino": "^9.5.0",
+    "playwright": "^1.49.0",
     "reflect-metadata": "^0.2.2"
   },
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.9.0",
+    "@types/node": "^22.9.1",
     "eslint": "9.15.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-prettier": "5.2.1",
