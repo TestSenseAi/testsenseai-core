@@ -1,0 +1,36 @@
+version: 2.1
+
+executors:
+  node-executor:
+    docker:
+      - image: circleci/node:22
+
+jobs:
+  lint:
+    executor: node-executor
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Run ESLint
+          command: npm run lint
+
+  test:
+    executor: node-executor
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Run unit tests
+          command: npm run test
+
+workflows:
+  version: 2
+  lint_and_test:
+    jobs:
+      - lint
+      - test
