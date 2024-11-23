@@ -9,8 +9,8 @@ TestSenseAi is an automated testing framework that integrates End-to-End (E2E) t
   - [Features](#features)
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Configuration](#configuration)
+    - [Installation](#installation)
+    - [Configuration](#configuration)
   - [Project Structure](#project-structure)
   - [Usage](#usage)
     - [Generating Test Cases](#generating-test-cases)
@@ -40,21 +40,21 @@ TestSenseAi is an automated testing framework that integrates End-to-End (E2E) t
 - npm or yarn package manager
 - OpenAI API Key with access to the GPT-4 beta
 
-## Installation
+### Installation
 
 Clone the repository and install dependencies:
 
-```sh
-git clone https://github.com/yourusername/testsenseai-core.git
+```bash
+git clone https://github.com/TestSenseAi/testsenseai-core.git
 cd testsenseai-core
 npm install
 ```
 
-## Configuration
+### Configuration
 
 1. Set Up Environment Variables
 
-   Create a .env file in the root directory and add your OpenAI API key:
+   Create a `.env` file in the root directory and add your OpenAI API key:
 
    ```text
    OPENAI_API_KEY=your-openai-api-key
@@ -64,13 +64,15 @@ npm install
 
 2. Install Playwright Browsers
 
-```sh
+```bash
+npm install
 npx playwright install
 ```
 
 ## Project Structure
 
 ```text
+text
 testsenseai-core/
 ├── src/
 │ ├── ai/
@@ -116,14 +118,12 @@ Example:
 
 ```typescript
 import { testGenerator } from 'testsenseai-core';
-
 async function generateTests() {
   const testCases = await testGenerator.generateTestCases(
     'User logs in and views the dashboard',
   );
   console.log(testCases);
 }
-
 generateTests();
 ```
 
@@ -135,17 +135,15 @@ Example:
 
 ```typescript
 import { selectorHealer } from 'testsenseai-core';
-
 async function healSelector() {
-  const domStructure = '<html>...your DOM here...</html>';
-  const brokenSelector = '#old-button-id';
-  const newSelector = await selectorHealer.healSelector(
-    domStructure,
-    brokenSelector,
-  );
-  console.log(`Suggested new selector: ${newSelector}`);
+const domStructure = '<html>...your DOM here...</html>';
+const brokenSelector = '#old-button-id';
+const newSelector = await selectorHealer.healSelector(
+domStructure,
+brokenSelector,
+);
+console.log(Suggested new selector: ${newSelector});
 }
-
 healSelector();
 ```
 
@@ -157,7 +155,6 @@ Example:
 
 ```typescript
 import { naturalLanguageProcessor } from 'testsenseai-core';
-
 async function convertToScript() {
   const description =
     'Test that the user can successfully reset their password.';
@@ -165,27 +162,26 @@ async function convertToScript() {
     await naturalLanguageProcessor.convertToTestScript(description);
   console.log(testScript);
 }
-
 convertToScript();
 ```
 
 ## Roadmap
 
 - CLI Enhancements
-  • Interactive mode for conversational test creation.
-  • Custom commands and aliases.
-  • Web Dashboard
-  • Real-time monitoring of test execution.
-  • Analytics and reporting features.
-  • Plugin Architecture
-  • SDK for third-party plugin development.
-  • Official plugins for integrations with CI/CD tools.
-  • Expanded AI Features
-  • Scenario-based test suite generation.
-  • AI-assisted debugging and error analysis.
-  • IDE Integration
-  • Extensions for popular IDEs like Visual Studio Code.
-  • IntelliSense support for improved developer experience.
+  - Interactive mode for conversational test creation.
+  - Custom commands and aliases.
+- Web Dashboard
+  - Real-time monitoring of test execution.
+  - Analytics and reporting features.
+- Plugin Architecture
+  - SDK for third-party plugin development.
+  - Official plugins for integrations with CI/CD tools.
+- Expanded AI Features
+  - Scenario-based test suite generation.
+  - AI-assisted debugging and error analysis.
+- IDE Integration
+  - Extensions for popular IDEs like Visual Studio Code.
+  - IntelliSense support for improved developer experience.
 
 ## Contributing
 
@@ -202,7 +198,7 @@ For questions or support, please open an issue in the repository or contact us a
 ## Acknowledgments
 
 - Thanks to the OpenAI team for providing access to the GPT-4 beta.
-  • Inspired by the capabilities of Cypress and Playwright.
+- Inspired by the capabilities of Cypress and Playwright.
 
 ## Notes
 
