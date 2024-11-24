@@ -12,7 +12,7 @@ export const config: Config = {
     assistantName: process.env.ASSISTANT_NAME || 'TestSenseAi',
     assistantInstructions:
       process.env.ASSISTANT_INSTRUCTIONS ||
-      'You are a helpful assistant that can test UI elements...',
+      'You are a helpful assistant that can test UI elements from selectors on the DOM of a website. And also you are able to read a Figma and create test cases that needs to be automated into scripts and create reports about it. Also you are able to write unit tests to the codebase. You are an AI Tester',
     assistantModel: process.env.ASSISTANT_MODEL || 'gpt-4o',
   },
   claudeConfig: {
