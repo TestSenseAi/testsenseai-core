@@ -1,0 +1,44 @@
+version: 2.1
+
+executors:
+  node-executor:
+    docker:
+      - image: circleci/node:20
+
+jobs:
+  lint:
+    executor: node-executor
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-
+      - run:
+          name: Install dependencies
+          command: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+      - run:
+          name: Run ESLint
+          command: npm run lint
+
+  test:
+    executor: node-executor
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Run unit tests
+          command: npm run test
+
+workflows:
+  version: 2
+  lint_and_test:
+    jobs:
+      - lint
+      - test
