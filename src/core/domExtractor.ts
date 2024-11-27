@@ -1,21 +1,26 @@
 import { Page } from 'playwright';
 import { generateSelectors } from '../utils/selectorGenerator';
+import { DOMElement } from './types';
 
 export class DOMExtractor {
   constructor(private page: Page) {}
 
-  async extractDOM(): Promise<any> {
+  async extractDOM(): Promise<{ domContent: string; elements: DOMElement[] }> {
     // Get the entire HTML content
     const domContent = await this.page.content();
 
     // Extract elements and their selectors
-    const elements = await this.page.$$eval('*', (nodes) =>
+    const elements: DOMElement[] = await this.page.$$eval('*', (nodes) =>
       nodes.map((node) => ({
-        tagName: node.tagName,
-        id: node.id,
-        classes: node.className,
+        tag: node.tagName,
+        attributes: {
+          id: node.id,
+          classes: node.className,
+        },
         textContent: node.textContent,
-        selectors: [] as string[], // We'll populate this next
+        role: node.role,
+        children: [] as DOMElement[],
+        selectors: [] as string[],
       })),
     );
 
