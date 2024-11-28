@@ -193,7 +193,7 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-For questions or support, please open an issue in the repository or contact us at <support@testsenseai.com>.
+For questions or support, please open an issue in the repository or contact us at <support@testsense.ai>.
 
 ## Acknowledgments
 
