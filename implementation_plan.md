@@ -3,7 +3,7 @@
 ### 1. AI Provider Integration Framework
 
 **Estimate:** 2 weeks
-**Assignee:** @ai-lead
+**Assignee:** @csarmientocj
 **Labels:** enhancement, ai-core
 
 Implement flexible provider system for integrating multiple AI models through unified interface.
@@ -25,7 +25,7 @@ Implement flexible provider system for integrating multiple AI models through un
 ### 2. DOM Analysis System
 
 **Estimate:** 3 weeks
-**Assignee:** @core-lead
+**Assignee:** @csarmientocj
 **Labels:** enhancement, core-engine
 
 Enhance DOM extraction and analysis capabilities.
@@ -48,7 +48,7 @@ Enhance DOM extraction and analysis capabilities.
 ### 1. Natural Language Test Processor
 
 **Estimate:** 2 weeks
-**Assignee:** @ai-engineer
+**Assignee:** @csarmientocj
 **Labels:** feature, ai
 
 Build system to convert natural language into test specifications.
@@ -69,7 +69,7 @@ Build system to convert natural language into test specifications.
 ### 2. Test Generator Implementation
 
 **Estimate:** 3 weeks
-**Assignee:** @core-engineer
+**Assignee:** @csarmientocj
 **Labels:** feature, test-automation
 
 Create comprehensive test generation system.
@@ -92,7 +92,7 @@ Create comprehensive test generation system.
 ### 1. Selector Healer Implementation
 
 **Estimate:** 2 weeks
-**Assignee:** @automation-lead
+**Assignee:** @csarmientocj
 **Labels:** feature, automation
 
 Build system for maintaining and repairing selectors.
@@ -115,7 +115,7 @@ Build system for maintaining and repairing selectors.
 ### 1. CLI Enhancement
 
 **Estimate:** 2 weeks
-**Assignee:** @devtools-engineer
+**Assignee:** @csarmientocj
 **Labels:** enhancement, developer-experience
 
 Improve command-line interface functionality.
@@ -136,7 +136,7 @@ Improve command-line interface functionality.
 ### 2. IDE Extensions
 
 **Estimate:** 2 weeks
-**Assignee:** @devtools-lead
+**Assignee:** @csarmientocj
 **Labels:** feature, developer-experience
 
 Develop extensions for popular IDEs.
@@ -159,7 +159,7 @@ Develop extensions for popular IDEs.
 ### 1. Analytics Engine
 
 **Estimate:** 1.5 weeks
-**Assignee:** @analytics-engineer
+**Assignee:** @csarmientocj
 **Labels:** feature, analytics
 
 Implement test execution analytics system.
@@ -180,7 +180,7 @@ Implement test execution analytics system.
 ### 2. Dashboard Implementation
 
 **Estimate:** 1.5 weeks
-**Assignee:** @frontend-engineer
+**Assignee:** @csarmientocj
 **Labels:** feature, ui
 
 Create web dashboard for results visualization.
