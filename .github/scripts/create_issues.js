@@ -14,7 +14,15 @@ async function main() {
   // Parse the markdown content
   const tasks = parseImplementationPlan(fileContent);
 
+  // Validate tasks array
+  if (!Array.isArray(tasks) || tasks.length === 0) {
+    throw new Error('No valid tasks found in implementation plan');
+  }
+
   for (const task of tasks) {
+    if (!task.title || !task.epic) {
+      throw new Error(`Invalid task data: Missing required fields`);
+    }
     const issueTitle = `${task.title} [${task.epic}]`;
 
     const issueBody = `
