@@ -16,7 +16,7 @@
     "axios": "^1.7.7",
     "dotenv": "^16.4.5",
     "inversify": "^6.1.4",
-    "openai": "^4.73.0",
+    "openai": "^4.76.3",
     "pino": "^9.5.0",
     "playwright": "^1.49.0",
     "reflect-metadata": "^0.2.2"
