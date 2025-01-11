@@ -9,7 +9,13 @@ async function main() {
   const { owner, repo } = github.context.repo;
 
   const filePath = './implementation_plan.md';
-  const fileContent = fs.readFileSync(filePath, 'utf8');
+  let fileContent;
+  try {
+    fileContent = fs.readFileSync(filePath, 'utf8');
+  } catch (error) {
+    core.setFailed(`Failed to read file at ${filePath}: ${error.message}`);
+    return;
+  }
 
   // Parse the markdown content
   const tasks = parseImplementationPlan(fileContent);
