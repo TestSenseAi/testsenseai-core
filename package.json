@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@primer/css": "21.5.1",
-    "axios": "^1.7.7",
+    "axios": "^1.8.4",
     "dotenv": "^16.4.5",
     "inversify": "^6.1.4",
     "openai": "^4.87.4",
